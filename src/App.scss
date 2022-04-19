@@ -17,6 +17,9 @@
   #responsive-navbar-nav {
     justify-content: space-evenly;
   }
+  .mobile_left_logo .desktop {
+    justify-content: space-evenly;
+  }
   .mobileShow {
   }
   .mobile_center_logo {
@@ -88,63 +91,90 @@
   }
 }
 .home_page {
+
+    
+    .btns {
+      display: flex;
+      flex-direction: column;
+      height: 30%;
+      justify-content: space-around;
+      right: 1rem;
+      top: 40%;
+      position: fixed;
+      z-index: 100;
+      a {
+        text-align: center;
+        text-decoration: unset;
+        color: white;
+        .social_btn {
+          border: 1px solid white;
+          border-radius: 50%;
+          padding: 20px;
+        }
+       
+      }
+    }
+  
+  
   .Home {
     height: 115vh;
-    .bg {
-      background-size: cover;
-      .bg_div {
+    .carousel-root {
+      height: 100%;
+      .carousel {
         height: 100%;
-        position: relative;
-        .text {
-          text-align: center;
-          position: absolute;
-          left: 50%;
-          top: 65%;
-          transform: translate(-50%, -50%);
-          width: 100%;
-          .context,
-          .title,
-          .time {
-            color: white;
-          }
-          .context,
-          .time {
-            font-size: 13px;
-            letter-spacing: 5px;
-          }
-          .context {
-            font-weight: 600;
-          }
-          .time {
-            margin-top: 1rem;
-          }
-          .title_div {
-            .title {
-              font-size: 80px;
-              letter-spacing: 5px;
-              font-family: initial;
-              .title_line {
-                height: 5px;
-                width: 40px;
-                background-color: white;
-                margin: 0 auto;
-                border-radius: 10px;
+        .slider-wrapper {
+          height: 100%;
+          .slider {
+            height: 100%;
+            .slide {
+              .bg {
+                background-size: cover;
+                height: 100%;
+                .bg_div {
+                  height: 100%;
+                  position: relative;
+                  background-size: cover;
+                  .text {
+                    text-align: center;
+                    position: absolute;
+                    left: 50%;
+                    top: 65%;
+                    transform: translate(-50%, -50%);
+                    width: 100%;
+                    .context,
+                    .title,
+                    .time {
+                      color: white;
+                    }
+                    .context,
+                    .time {
+                      font-size: 13px;
+                      letter-spacing: 5px;
+                    }
+                    .context {
+                      font-weight: 600;
+                    }
+                    .time {
+                      margin-top: 1rem;
+                    }
+                    .title_div {
+                      .title {
+                        font-size: 80px;
+                        letter-spacing: 5px;
+                        font-family: initial;
+                        .title_line {
+                          height: 5px;
+                          width: 40px;
+                          background-color: white;
+                          margin: 0 auto;
+                          border-radius: 10px;
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
-          }
-        }
-        .btns {
-          display: flex;
-          flex-direction: column;
-          position: absolute;
-          right: 5%;
-          top: 0;
-          height: 100%;
-          justify-content: space-evenly;
-          .social_btn {
-            border: 1px solid white;
-            border-radius: 50%;
-            padding: 20px;
           }
         }
       }
@@ -843,14 +873,29 @@
       }
     }
     .mobile_left_logo {
-      padding: 5%;
-      width: 20%;
-      .navbar-nav {
-        border-bottom: 1px solid #fff;
-        margin-bottom: 2%;
+      display: none;
+    }
+  }
+  .mobile_left_logo.offcanvas {
+    background-color: #000;
+    .offcanvas-header {
+      button {
+        color: white;
+        background-color: white;
       }
-      .nav_a_link {
-        padding-bottom: 5%;
+    }
+    .offcanvas-body {
+      padding: 2rem 2rem;
+      .navbar-nav {
+        border-bottom: 1px solid #ffffff;
+        .nav_a_link {
+          a {
+            padding: 15px 0;
+            display: inline-block;
+            color: #fff;
+            text-decoration: none;
+          }
+        }
       }
     }
   }
@@ -893,7 +938,7 @@
   }
   .home_page {
     .Home {
-      height: 50vh;
+      height: 65vh;
       .bg {
         background-repeat: no-repeat;
         background-position: 50% 50%;

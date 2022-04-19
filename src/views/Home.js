@@ -22,8 +22,11 @@ import { updateInfo } from "../redux/actions";
 
 import { Link } from "react-router-dom";
 
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
+
 function Home() {
-  var img_slick_settings = {
+  const img_slick_settings = {
     dots: false,
     infinite: false,
     speed: 500,
@@ -32,6 +35,19 @@ function Home() {
     initialSlide: 0,
     arrows: false,
   };
+
+  const banner_slick_settings = {
+    dots: false,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 3000,
+    autoplaySpeed: 3000,
+    cssEase: "linear",
+
+    arrows: false
+  }
 
   const dispatch = useDispatch();
   const store = useStore();
@@ -59,44 +75,81 @@ function Home() {
   };
 
   useEffect(() => {
-    getInformation();
-    // console.log(info);
+
+    if (store.getState().shopInfo.info == null) {
+      getInformation();
+    } else {
+      //console.log(store.getState().shopInfo.info);
+      setInfo(store.getState().shopInfo.info);
+    }
   }, []);
+
+  const [showBtns, setShowBtns] = useState(false);
+
+
+
 
   return (
     <div className="home_page">
-      <div className="Home">
-        {info.banner != null ? (
-          <div
-            className="bg"
-            style={{
-              backgroundImage: `url(${
-                info.image_base_url + info.banner.banner_image_path
-              })`,
-              height: "100%",
-            }}
+      {info.store != null ?
+      
+         
+
+          <div className="btns">
+            <a href={"https://wa.me/" + info.store.phone}>
+              <img className="social_btn" src={whatsapp} />
+              <h6>whatsapp</h6>
+            </a>
+            <a href={"http://m.me/" + info.store.facebook_link.split('https://www.facebook.com/')[1]}>
+              <img className="social_btn" src={fb_msg} />
+              <h6>Facebook</h6>
+            </a>
+          </div>
+    
+
+
+        : null}
+
+      <div className="Home" >
+        {info.banners != null ? (
+          <Carousel
+            showArrows={false}
+            emulateTouch={true}
+            autoPlay={true}
+            infiniteLoop={true}
+            interval={5000}
+            transitionTime={1000}
+            showThumbs={false}
           >
-            <div className="bg_div">
-              <div className="text">
-                <p className="context">{info.banner.banner_subtitle1}</p>
-                <div className="title_div">
-                  <div className="title">
-                    {info.banner.banner_main_title}
-                    <div className="title_line"></div>
+            {info.banners.map((item, index) => {
+              return (
+                <div
+                  className="bg"
+                  key={item + index}
+                  style={{
+                    backgroundImage: `url(${info.image_base_url + item.banner_image_path
+                      })`,
+                    height: "100%",
+                  }}
+                >
+                  <div className="bg_div">
+                    <div className="text">
+                      <p className="context">{item.banner_subtitle1}</p>
+                      <div className="title_div">
+                        <div className="title">
+                          {item.banner_main_title}
+                          <div className="title_line"></div>
+                        </div>
+                      </div>
+                      <p className="time">{item.banner_subtitle2}</p>
+
+                    </div>
                   </div>
                 </div>
-                <p className="time">{info.banner.banner_subtitle2}</p>
-                <div className="btns">
-                  <a href={"https://wa.me/23667588" + info.store.phone}>
-                    <img className="social_btn" src={whatsapp} />
-                  </a>
-                  <a href={"http://m.me/zincgrouphk"}>
-                    <img className="social_btn" src={fb_msg} />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+
+              )
+            })}
+          </Carousel>
         ) : null}
       </div>
       <div className="about">
@@ -150,18 +203,18 @@ function Home() {
           <Row lg={12}>
             {info.menus != null
               ? info.menuCategories.map((item, index) => {
-                  return (
-                    <Col lg={2} md={4} xs={4} className="item">
-                      <Link
-                        to="#"
-                        className={typeId == item.id ? "active" : null}
-                        onClick={() => handleMenuType(item.id)}
-                      >
-                        {item.name}
-                      </Link>
-                    </Col>
-                  );
-                })
+                return (
+                  <Col lg={2} md={4} xs={4} className="item" key={index + item}>
+                    <Link
+                      to="#"
+                      className={typeId == item.id ? "active" : null}
+                      onClick={() => handleMenuType(item.id)}
+                    >
+                      {item.name}
+                    </Link>
+                  </Col>
+                );
+              })
               : null}
           </Row>
         </div>
@@ -170,20 +223,20 @@ function Home() {
           <Row lg={10} md={10} xs={12}>
             {info.menus != null
               ? info.menus.map((item, index) => {
-                  if (item.menu_category_id == typeId) {
-                    return (
-                      <Col lg={4} md={6} xs={12} className="item">
-                        <div style={{ color: "#BDBDBD" }}>
-                          <div className="context">
-                            <h6 className="name">{item.menu_title}</h6>
-                            <h6 className="price">HKD${item.price}</h6>
-                          </div>
-                          <h6 className="description">{item.menu_content}</h6>
+                if (item.menu_category_id == typeId) {
+                  return (
+                    <Col lg={4} md={6} xs={12} className="item" key={index + item}>
+                      <div style={{ color: "#BDBDBD" }}>
+                        <div className="context">
+                          <h6 className="name">{item.menu_title}</h6>
+                          <h6 className="price">HKD${item.price}</h6>
                         </div>
-                      </Col>
-                    );
-                  }
-                })
+                        <h6 className="description">{item.menu_content}</h6>
+                      </div>
+                    </Col>
+                  );
+                }
+              })
               : null}
           </Row>
         </div>
@@ -192,15 +245,15 @@ function Home() {
         <Slider {...img_slick_settings}>
           {info.galleries != null
             ? info.galleries.map((item, index) => {
-                return (
-                  <div className="img_div">
-                    <img
-                      src={info.image_base_url + item.image}
-                      alt={item.gallery_content}
-                    />
-                  </div>
-                );
-              })
+              return (
+                <div className="img_div" key={index + item}>
+                  <img
+                    src={info.image_base_url + item.image}
+                    alt={item.gallery_content}
+                  />
+                </div>
+              );
+            })
             : null}
         </Slider>
       </div>

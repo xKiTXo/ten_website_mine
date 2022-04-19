@@ -69,7 +69,7 @@ function Menu() {
                   {info.menus != null
                     ? info.menuCategories.map((item, index) => {
                         return (
-                          <Col lg={2} md={4} xs={4} className="item">
+                          <Col lg={2} md={4} xs={4} className="item" key={index+item}>
                             <Link
                               to="#"
                               className={typeId == item.id ? "active" : null}
@@ -90,7 +90,7 @@ function Menu() {
                     ? info.menus.map((item, index) => {
                         if (item.menu_category_id == typeId) {
                           return (
-                            <Col lg={4} md={6} xs={12} className="item">
+                            <Col lg={4} md={6} xs={12} className="item"  key={index+item}>
                               <div style={{ color: "#BDBDBD" }}>
                                 <div className="context">
                                   <h6 className="name">{item.menu_title}</h6>

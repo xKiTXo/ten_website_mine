@@ -55,7 +55,7 @@ function Gallery() {
                       {info.galleries != null
                         ? info.galleries.map((item, index) => {
                             return (
-                              <Col lg={3} md={3} xs={12} className="item">
+                              <Col lg={3} md={3} xs={12} className="item" key={index+item}>
                                 <img
                                   src={info.image_base_url + item.image}
                                   alt={item.gallery_content}

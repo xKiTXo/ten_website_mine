@@ -130,7 +130,7 @@ export function Footer() {
                   {info.venues != null
                     ? info.venues.map((item, index) => {
                         return (
-                          <Col md={6} xs={6}>
+                          <Col md={6} xs={6} key={index+item}>
                             <a href={item.website}>{item.name}</a>
                           </Col>
                         );
