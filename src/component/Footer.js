@@ -51,7 +51,7 @@ export function Footer() {
             <Nav.Item >
               <Link to="/"  onClick={() => handleClick()}>
                 {info.store != null ? (
-                  <img src={info.image_base_url + info.store.icon_image_path} />
+                  <img src={info.image_base_url + info.store.icon_image_path}  height="32" />
                 ) : null}
               </Link>
             </Nav.Item>

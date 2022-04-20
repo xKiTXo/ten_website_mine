@@ -75,7 +75,7 @@ function Header() {
               <Nav.Item className="nav_a_link">
                 <Link to="/" onClick={() => setShowNav(false)}>
                 {info.store != null ? (
-                  <img src={info.image_base_url + info.store.icon_image_path} width="80" height="32" />
+                  <img src={info.image_base_url + info.store.icon_image_path} height="32" />
                 ) : null}
                 </Link>
               </Nav.Item>
@@ -116,7 +116,7 @@ function Header() {
             <Nav.Item className="nav_a_link">
               <Link to="/">
                 {info.store != null ? (
-                  <img src={info.image_base_url + info.store.icon_image_path} width="80" height="32" />
+                  <img src={info.image_base_url + info.store.icon_image_path}  height="32" />
                 ) : null}
 
               </Link>
