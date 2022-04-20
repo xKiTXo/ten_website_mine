@@ -848,6 +848,7 @@
 }
 @media (max-width: 991px) {
   .header {
+    position: fixed;
     background-color: black;
     .mobileShow {
       display: none;
@@ -939,6 +940,11 @@
     }
   }
   .home_page {
+    .btns {
+      height: 26%;
+      top: 28%;
+      
+    }
     .Home {
       height: 65vh;
       .bg {

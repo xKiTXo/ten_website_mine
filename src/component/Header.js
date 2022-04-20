@@ -14,7 +14,7 @@ function Header() {
 
   }, [])
   return (
-    <Navbar expand="lg" variant="dark" className="header">
+    <Navbar expand="lg" variant="dark" className="header " >
       <Container>
         <div className="mobile">
           <Navbar.Toggle
