@@ -7,12 +7,35 @@ import logo_white from "../imgs/logo_white.png";
 
 import { Routes, Route, Link } from "react-router-dom";
 
+import { useStore ,useDispatch} from "react-redux";
+import { getStoreInfo } from "../controller/apiFunction";
+import { updateInfo } from "../redux/actions";
 function Header() {
   const [showNav, setShowNav] = useState(false)
 
-  useEffect(() => {
+  const store = useStore();
+  const [info, setInfo] = useState({});
+  const dispatch = useDispatch();
 
-  }, [])
+  const getInformation = async () => {
+    let results = await getStoreInfo()
+      .then((res) => {
+        console.log(res);
+        if (res.status >= 200 && res.status < 300) {
+          setInfo(res.data);
+          updateInfo(dispatch, res.data);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+  useEffect(() => {
+    if (store.getState().shopInfo.info == null) {
+      getInformation();
+    } else {
+      // console.log(store.getState().shopInfo.info);
+      setInfo(store.getState().shopInfo.info);
+    }
+  }, []);
   return (
     <Navbar expand="lg" variant="dark" className="header " >
       <Container>
@@ -40,8 +63,8 @@ function Header() {
           onHide={() => setShowNav(false)}
         >
           <Offcanvas.Header >
-            <CloseButton variant='white' onClick={()=>setShowNav(false)}/>
-            <Offcanvas.Title id="offcanvasNavbarLabel" style={{width:'100%',textAlign:'center'}}>
+            <CloseButton variant='white' onClick={() => setShowNav(false)} />
+            <Offcanvas.Title id="offcanvasNavbarLabel" style={{ width: '100%', textAlign: 'center' }}>
               <a href="https://zincgp.uniconsults.com/" onClick={() => setShowNav(false)}>
                 <img src={logo_white} width="80" />
               </a>
@@ -51,7 +74,9 @@ function Header() {
             <Nav>
               <Nav.Item className="nav_a_link">
                 <Link to="/" onClick={() => setShowNav(false)}>
-                  <img src={logo} width="80" height="32" />
+                {info.store != null ? (
+                  <img src={info.image_base_url + info.store.icon_image_path} width="80" height="32" />
+                ) : null}
                 </Link>
               </Nav.Item>
             </Nav>
@@ -90,7 +115,10 @@ function Header() {
           <Nav>
             <Nav.Item className="nav_a_link">
               <Link to="/">
-                <img src={logo} width="80" height="32" />
+                {info.store != null ? (
+                  <img src={info.image_base_url + info.store.icon_image_path} width="80" height="32" />
+                ) : null}
+
               </Link>
             </Nav.Item>
           </Nav>

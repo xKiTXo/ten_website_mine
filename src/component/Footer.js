@@ -48,7 +48,13 @@ export function Footer() {
       <div className="content">
         <Row className="top_menu">
           <Col md={4}>
-            <img src={Mine} />
+            <Nav.Item >
+              <Link to="/"  onClick={() => handleClick()}>
+                {info.store != null ? (
+                  <img src={info.image_base_url + info.store.icon_image_path} />
+                ) : null}
+              </Link>
+            </Nav.Item>
           </Col>
           <Col md={8}>
             <ul className="top_ul">
@@ -117,7 +123,7 @@ export function Footer() {
         </Row>
         <Row className="bottom_menu">
           <Col lg={4} md={3} sm={12} xs={12} className="description">
-            {info.store!=null?info.store.footer_text:null}
+            {info.store != null ? info.store.footer_text : null}
           </Col>
           <Col lg={8} md={9} sm={12} xs={12} className="menu">
             <Row>
@@ -126,12 +132,12 @@ export function Footer() {
                 <Row>
                   {info.venues != null
                     ? info.venues.map((item, index) => {
-                        return (
-                          <Col md={6} xs={6} key={index+item}>
-                            <a href={item.website}>{item.name}</a>
-                          </Col>
-                        );
-                      })
+                      return (
+                        <Col md={6} xs={6} key={index + item}>
+                          <a href={item.website}>{item.name}</a>
+                        </Col>
+                      );
+                    })
                     : null}
                 </Row>
               </Col>

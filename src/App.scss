@@ -1,5 +1,16 @@
 @import "~bootstrap/scss/bootstrap";
-
+.loading {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  .spinner-border {
+    font-size: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+}
 .web {
   background-color: black;
 }
@@ -91,33 +102,30 @@
   }
 }
 .home_page {
-
-    
-    .btns {
-      display: flex;
-      flex-direction: column;
-      height: 30%;
-      justify-content: space-around;
-      right: 1rem;
-      top: 40%;
-      position: fixed;
-      z-index: 100;
-      a {
-        text-align: center;
-        text-decoration: unset;
-        color: white;
-        .social_btn {
-          border: 1px solid white;
-          border-radius: 50%;
-          padding: 20px;
-        }
-       h6{
-         margin-bottom: 0;
-       }
+  .btns {
+    display: flex;
+    flex-direction: column;
+    height: 30%;
+    justify-content: space-around;
+    right: 1rem;
+    top: 40%;
+    position: fixed;
+    z-index: 100;
+    a {
+      text-align: center;
+      text-decoration: unset;
+      color: white;
+      .social_btn {
+        border: 1px solid white;
+        border-radius: 50%;
+        padding: 20px;
+      }
+      h6 {
+        margin-bottom: 0;
       }
     }
-  
-  
+  }
+
   .Home {
     height: 115vh;
     .carousel-root {
@@ -943,7 +951,6 @@
     .btns {
       height: 26%;
       top: 28%;
-      
     }
     .Home {
       height: 65vh;
@@ -1005,12 +1012,11 @@
   }
   .about_page {
     .About {
-      
       .bg {
         background-position: center;
-        .bg_div{
-          .text{
-            .description{
+        .bg_div {
+          .text {
+            .description {
               padding: 0 10%;
             }
           }
@@ -1019,14 +1025,12 @@
     }
   }
   .service_page {
-   
     .Service {
       height: 175vh;
       .bg {
         background-position: center;
         .bg_div {
           .text {
-           
             .title_div {
               .title {
                 padding: 0;

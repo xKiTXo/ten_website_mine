@@ -14,6 +14,11 @@ import Contact from "./views/Contact";
 import { getStoreInfo } from "./controller/apiFunction";
 import { updateInfo } from "./redux/actions";
 import { useDispatch } from "react-redux";
+
+import { Spinner,ProgressBar } from "react-bootstrap";
+
+
+
 function App() {
 
   const dispatch = useDispatch();
@@ -25,7 +30,7 @@ function App() {
         console.log(res);
         if (res.status >= 200 && res.status < 300) {
           updateInfo(dispatch, res.data);
-          setLoad(false);
+          setLoad(false)
         }
       })
       .catch((err) => console.log(err));
@@ -49,7 +54,10 @@ function App() {
           <Route exact path="/contact" element={<Contact />} />
         </Routes>
         <Footer />
-      </div> : null
+      </div> :
+      <div className="loading">
+        <Spinner animation="border" role="status" variant="light"/>
+      </div>
 
   )
 }
