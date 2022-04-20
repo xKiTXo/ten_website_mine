@@ -79,12 +79,13 @@ function Home() {
     if (store.getState().shopInfo.info == null) {
       getInformation();
     } else {
-      //console.log(store.getState().shopInfo.info);
+      // console.log(store.getState().shopInfo.info);
       setInfo(store.getState().shopInfo.info);
+      setTypeId(store.getState().shopInfo.info.menuCategories[0].id);
     }
   }, []);
 
-  const [showBtns, setShowBtns] = useState(false);
+
 
 
 
@@ -92,20 +93,20 @@ function Home() {
   return (
     <div className="home_page">
       {info.store != null ?
-      
-         
 
-          <div className="btns">
-            <a href={"https://wa.me/" + info.store.phone}>
-              <img className="social_btn" src={whatsapp} />
-              <h6>whatsapp</h6>
-            </a>
-            <a href={"http://m.me/" + info.store.facebook_link.split('https://www.facebook.com/')[1]}>
-              <img className="social_btn" src={fb_msg} />
-              <h6>Facebook</h6>
-            </a>
-          </div>
-    
+
+
+        <div className="btns">
+          <a href={"https://wa.me/" + info.store.phone}>
+            <img className="social_btn" src={whatsapp} />
+            <h6>whatsapp</h6>
+          </a>
+          <a href={"http://m.me/" + info.store.facebook_link.split('https://www.facebook.com/')[1]}>
+            <img className="social_btn" src={fb_msg} />
+            <h6>Facebook</h6>
+          </a>
+        </div>
+
 
 
         : null}

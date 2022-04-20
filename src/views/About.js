@@ -6,7 +6,6 @@ import { useDispatch, useStore } from "react-redux";
 import { getStoreInfo } from "../controller/apiFunction";
 import { updateInfo } from "../redux/actions";
 
-import { Link } from "react-router-dom";
 
 function About() {
   const store = useStore();
@@ -26,9 +25,11 @@ function About() {
   };
   useEffect(() => {
     if (store.getState().shopInfo.info == null) {
+
+      console.log('getInformation()')
       getInformation();
     } else {
-      console.log(store.getState().shopInfo.info);
+      // console.log(store.getState().shopInfo.info);
       setInfo(store.getState().shopInfo.info);
     }
   }, []);
@@ -49,14 +50,9 @@ function About() {
                 </div>
               </div>
               <p className="description">
-                For your next restaurant & bar prospect in a prime Central Hong
-                Kong location, uncover Mine. Discover the intrigue of unwinding
-                in an underground setting without descending, as you soak in the
-                surroundings that hark back to a bygone era. Carefully curated
-                from top to toe, every detail of Mine is designed to take you to
-                another dimension. From the rustic décor to vintage memorabilia
-                lining the walls, our conceptual bar and restaurant gives
-                patrons an experiential space to revel and recline.
+                {info.store!=null?
+                info.store.about_text
+                :null}
               </p>
             </div>
           </div>

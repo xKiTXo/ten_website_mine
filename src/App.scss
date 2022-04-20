@@ -111,7 +111,9 @@
           border-radius: 50%;
           padding: 20px;
         }
-       
+       h6{
+         margin-bottom: 0;
+       }
       }
     }
   
@@ -380,7 +382,7 @@
 }
 .service_page {
   .Service {
-    height: 135vh;
+    height: 150vh;
     .bg {
       background-size: cover;
       .bg_div {
@@ -997,19 +999,28 @@
   }
   .about_page {
     .About {
-      height: 80vh;
+      
       .bg {
         background-position: center;
+        .bg_div{
+          .text{
+            .description{
+              padding: 0 10%;
+            }
+          }
+        }
       }
     }
   }
   .service_page {
+   
     .Service {
+      height: 175vh;
       .bg {
         background-position: center;
         .bg_div {
           .text {
-            top: 55%;
+           
             .title_div {
               .title {
                 padding: 0;

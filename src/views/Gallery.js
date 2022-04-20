@@ -28,9 +28,10 @@ function Gallery() {
 
   useEffect(() => {
     if (store.getState().shopInfo.info == null) {
+      console.log('getInformation()')
       getInformation();
     } else {
-      console.log(store.getState().shopInfo.info);
+      // console.log(store.getState().shopInfo.info);
       setInfo(store.getState().shopInfo.info);
     }
   }, []);
@@ -59,7 +60,7 @@ function Gallery() {
                                 <img
                                   src={info.image_base_url + item.image}
                                   alt={item.gallery_content}
-                                  style={{ height: "100%", width: "100%" }}
+                                  style={{ height: "250px", width: "250px" }}
                                 />
                               </Col>
                             );

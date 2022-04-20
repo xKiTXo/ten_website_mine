@@ -34,7 +34,7 @@ export function Footer() {
     if (store.getState().shopInfo.info == null) {
       getInformation();
     } else {
-      console.log(store.getState().shopInfo.info);
+      // console.log(store.getState().shopInfo.info);
       setInfo(store.getState().shopInfo.info);
     }
   }, []);
@@ -117,10 +117,7 @@ export function Footer() {
         </Row>
         <Row className="bottom_menu">
           <Col lg={4} md={3} sm={12} xs={12} className="description">
-            Zinc Group HK is always pushing boundaries and expanding across Hong
-            Kong and beyond.
-            <br />
-            <p>© Zinc Group all rights reserved</p>
+            {info.store!=null?info.store.footer_text:null}
           </Col>
           <Col lg={8} md={9} sm={12} xs={12} className="menu">
             <Row>

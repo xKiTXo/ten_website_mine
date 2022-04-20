@@ -34,9 +34,10 @@ function Contact() {
 
   useEffect(() => {
     if (store.getState().shopInfo.info == null) {
+      console.log('getInformation()')
       getInformation();
     } else {
-      console.log(store.getState().shopInfo.info);
+      // console.log(store.getState().shopInfo.info);
       setInfo(store.getState().shopInfo.info);
     }
   }, []);

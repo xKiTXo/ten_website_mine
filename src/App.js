@@ -15,7 +15,9 @@ import { getStoreInfo } from "./controller/apiFunction";
 import { updateInfo } from "./redux/actions";
 import { useDispatch } from "react-redux";
 function App() {
+
   const dispatch = useDispatch();
+  const [isLoad, setLoad] = useState(true)
 
   const getInformation = async () => {
     let results = await getStoreInfo()
@@ -23,6 +25,7 @@ function App() {
         console.log(res);
         if (res.status >= 200 && res.status < 300) {
           updateInfo(dispatch, res.data);
+          setLoad(false);
         }
       })
       .catch((err) => console.log(err));
@@ -34,20 +37,21 @@ function App() {
   }, []);
 
   return (
-    <div className="web">
-      <Header />
+    isLoad == false ?
+      <div className="web">
+        <Header />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/about" element={<About />} />
+          <Route exact path="/service" element={<Service />} />
+          <Route exact path="/menu" element={<Menu />} />
+          <Route exact path="/gallery" element={<Gallery />} />
+          <Route exact path="/contact" element={<Contact />} />
+        </Routes>
+        <Footer />
+      </div> : null
 
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/about" element={<About />} />
-        <Route exact path="/service" element={<Service />} />
-        <Route exact path="/menu" element={<Menu />} />
-        <Route exact path="/gallery" element={<Gallery />} />
-        <Route exact path="/contact" element={<Contact />} />
-      </Routes>
-      <Footer />
-    </div>
-  );
+  )
 }
 
 export default App;

@@ -36,9 +36,10 @@ function Menu() {
 
   useEffect(() => {
     if (store.getState().shopInfo.info == null) {
+      console.log('getInformation()')
       getInformation();
     } else {
-      console.log(store.getState().shopInfo.info);
+      // console.log(store.getState().shopInfo.info);
       setInfo(store.getState().shopInfo.info);
       setTypeId(store.getState().shopInfo.info.menuCategories[0].id);
     }

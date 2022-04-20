@@ -25,9 +25,9 @@ function Header() {
 
           <Nav className="mobile_center_logo">
             <Nav.Item className="nav_a_link">
-              <Link to="/">
+              <a href="https://zincgp.uniconsults.com/">
                 <img src={logo_white} />
-              </Link>
+              </a>
             </Nav.Item>
           </Nav>
         </div>
@@ -42,9 +42,9 @@ function Header() {
           <Offcanvas.Header >
             <CloseButton variant='white' onClick={()=>setShowNav(false)}/>
             <Offcanvas.Title id="offcanvasNavbarLabel" style={{width:'100%',textAlign:'center'}}>
-              <Link to="/" onClick={() => setShowNav(false)}>
+              <a href="https://zincgp.uniconsults.com/" onClick={() => setShowNav(false)}>
                 <img src={logo_white} width="80" />
-              </Link>
+              </a>
             </Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
@@ -107,9 +107,9 @@ function Header() {
 
           <Nav className="mobileShow">
             <Nav.Item className="nav_a_link">
-              <Link to="#">
+              <a href='https://zincgp.uniconsults.com/' >
                 <img src={logo_white} width="156" height="156" />
-              </Link>
+              </a>
             </Nav.Item>
           </Nav>
 
