@@ -161,17 +161,11 @@ function Home() {
           </div>
         </div>
         <p>
-          For your next restaurant & bar prospect in a prime Central Hong Kong
-          location, uncover Mine. Discover the intrigue of unwinding in an
-          underground setting without descending, as you soak in the
-          surroundings that hark back to a bygone era.
+        {info.store!=null?
+                info.store.about_text
+                :null}
         </p>
-        <p>
-          Carefully curated from top to toe, every detail of Mine is designed to
-          take you to another dimension. From the rustic décor to vintage
-          memorabilia lining the walls, our conceptual bar and restaurant gives
-          patrons an experiential space to revel and recline.
-        </p>
+        
       </div>
       <div
         className="ourService"
