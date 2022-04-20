@@ -125,6 +125,14 @@
       }
     }
   }
+  .btns_mobile{
+    z-index: 100;
+    right: 0;
+    position: absolute;
+    button{
+      border-radius: 50%;
+    }
+  }
 
   .Home {
     height: 115vh;
@@ -949,6 +957,7 @@
   }
   .home_page {
     .btns {
+      // display: none;
       height: 26%;
       top: 28%;
     }

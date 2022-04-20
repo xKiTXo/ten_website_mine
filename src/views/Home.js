@@ -10,10 +10,6 @@ import service_l from "../imgs/home/service_left.png";
 import service_r from "../imgs/home/service_right.png";
 import service_bg from "../imgs/home/service_bg.png";
 
-import Rectangle1 from "../imgs/home/Rectangle1.png";
-import Rectangle2 from "../imgs/home/Rectangle2.png";
-import Rectangle3 from "../imgs/home/Rectangle3.png";
-import Rectangle4 from "../imgs/home/Rectangle4.png";
 
 import { useDispatch, useStore } from "react-redux";
 
@@ -24,6 +20,9 @@ import { Link } from "react-router-dom";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+
+
+import { Button } from "react-bootstrap";
 
 function Home() {
   const img_slick_settings = {
@@ -93,9 +92,6 @@ function Home() {
   return (
     <div className="home_page">
       {info.store != null ?
-
-
-
         <div className="btns">
           <a href={"https://wa.me/" + info.store.phone}>
             <img className="social_btn" src={whatsapp} />
@@ -106,10 +102,12 @@ function Home() {
             <h6>Facebook</h6>
           </a>
         </div>
-
-
-
         : null}
+        {/* {info.store != null ?
+        <div className="btns_mobile">
+          <Button type="button" variant="outline-secondary">Button</Button>
+        </div>
+        : null} */}
 
       <div className="Home" >
         {info.banners != null ? (
